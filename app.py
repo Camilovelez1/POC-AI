@@ -6,16 +6,24 @@ from openai import OpenAI
 from shiny import App, render, ui
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
- 
+from dotenv import load_dotenv
+
+load_dotenv()
 
 DATBRICKS_API_KEY = os.getenv("DATABRICKS_API_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 password = os.getenv("GMAIL_PASSWORD")
-
-# Databricks Connection Details
-
 DATABRICKS_SERVER = os.getenv("DATABRICKS_SERVER")
 DATABRICKS_HTTP_PATH = os.getenv("DATABRICKS_HTTP_PATH")
+
+
+# Validate environment variables
+if not all([DATBRICKS_API_KEY, DATABRICKS_SERVER, DATABRICKS_HTTP_PATH]):
+    raise ValueError("❌ ERROR: Missing Databricks credentials in environment variables.")
+
+if not OPENAI_API_KEY:
+    raise ValueError("❌ ERROR: Missing OpenAI API Key in environment variables.")
+
  
 # OpenAI Client
 client = OpenAI(api_key=OPENAI_API_KEY)
@@ -105,7 +113,7 @@ def send_email():
         server.login(sender_email, password)
         server.sendmail(sender_email, receiver_email, msg.as_string())
         server.quit()
-        return "Correo enviado exitosamente a David López."
+        return "Correo enviado exitosamente a Camilo Vélez."
     except Exception as e:
         return f"Error al enviar el correo: {str(e)}"
 

@@ -9,5 +9,11 @@ DATABRICKS_HTTP_PATH = ""
 To run
 I am using PDM to manage dependencies
 pdm install
+pdm venv activate
+pdm run shiny run --reload app.py
+
+pregunta ejemplo
+selecciona el mejor preoveedor para la categoria Neumáticos, basado en plazo de entrega, tiempo de despacho y precio
+
 
 
