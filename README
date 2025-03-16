@@ -1,19 +1,43 @@
-Env variables
+# 📊 AI-Powered Supplier Analysis & Email Automation
 
-DATBRICKS_API_KEY = ""
-OPENAI_API_KEY = ""
-password = ""
-DATABRICKS_SERVER = ""
-DATABRICKS_HTTP_PATH = ""
+This project is a **Shiny for Python** application that enables users to analyze supplier data using **OpenAI GPT-4**, retrieve information from **Databricks SQL**, and automate supplier communication via **email (SMTP/Gmail)**.
 
-To run
-I am using PDM to manage dependencies
+The app provides:
+✅ **AI-driven supplier analysis** based on key business metrics.  
+✅ **Live data retrieval** from a **Databricks SQL database**.  
+✅ **Interactive UI** built with **Shiny for Python**.  
+✅ **Automated supplier email notifications** using Gmail SMTP.  
+
+---
+
+## **🚀 Features**
+- **Query Suppliers with AI**: Ask questions about suppliers and get summarized insights.
+- **Databricks Integration**: Fetch supplier data from a Databricks SQL warehouse.
+- **Automated Supplier Communication**: Send purchase requests via email.
+- **Modern Web UI**: Built with **Shiny for Python** for an interactive experience.
+
+---
+
+## **🛠 Environment Variables**
+To run this project, create a `.env` file in the root directory and add the following environment variables:
+
+```ini
+# Databricks Credentials
+DATABRICKS_API_KEY=dapiXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+DATABRICKS_SERVER=adb-3809032798035191.11.azuredatabricks.net
+DATABRICKS_HTTP_PATH=/sql/1.0/warehouses/your_warehouse_id
+
+# OpenAI API Key
+OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+# Gmail SMTP Credentials
+GMAIL_PASSWORD=your_app_specific_password
+
+
+## ** To run this project**
 pdm install
 pdm venv activate
 pdm run shiny run --reload app.py
 
-pregunta ejemplo
+Example query
 selecciona el mejor preoveedor para la categoria Neumáticos, basado en plazo de entrega, tiempo de despacho y precio
-
-
-
