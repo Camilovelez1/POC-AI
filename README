@@ -1,0 +1,13 @@
+Env variables
+
+DATBRICKS_API_KEY = ""
+OPENAI_API_KEY = ""
+password = ""
+DATABRICKS_SERVER = ""
+DATABRICKS_HTTP_PATH = ""
+
+To run
+I am using PDM to manage dependencies
+pdm install
+
+
