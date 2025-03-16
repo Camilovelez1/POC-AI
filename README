@@ -1,8 +1,8 @@
-# 📊 AI-Powered Supplier Analysis & Email Automation
+# AI-Powered Supplier Analysis & Email Automation
 
 This project is a **Shiny for Python** application that enables users to analyze supplier data using **OpenAI GPT-4**, retrieve information from **Databricks SQL**, and automate supplier communication via **email (SMTP/Gmail)**.
 
-The app provides:
+## Features
 ✅ **AI-driven supplier analysis** based on key business metrics.  
 ✅ **Live data retrieval** from a **Databricks SQL database**.  
 ✅ **Interactive UI** built with **Shiny for Python**.  
@@ -10,7 +10,7 @@ The app provides:
 
 ---
 
-## **🚀 Features**
+## 📌 Key Functionalities
 - **Query Suppliers with AI**: Ask questions about suppliers and get summarized insights.
 - **Databricks Integration**: Fetch supplier data from a Databricks SQL warehouse.
 - **Automated Supplier Communication**: Send purchase requests via email.
@@ -18,7 +18,30 @@ The app provides:
 
 ---
 
-## **🛠 Environment Variables**
+## 🚀 Installation & Setup
+
+### Prerequisites
+Ensure you have **Python** and **PDM** installed. 
+
+### Install Dependencies
+```bash
+pdm install
+```
+
+### Activate Virtual Environment
+```bash
+pdm venv activate
+```
+
+### Run the Application
+```bash
+pdm run shiny run --reload app.py
+```
+
+---
+
+## 📁 Environment Variables
+
 To run this project, create a `.env` file in the root directory and add the following environment variables:
 
 ```ini
@@ -32,12 +55,33 @@ OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 # Gmail SMTP Credentials
 GMAIL_PASSWORD=your_app_specific_password
+```
 
+---
 
-## ** To run this project**
-pdm install
-pdm venv activate
-pdm run shiny run --reload app.py
+## 🔍 Example Query
+To analyze supplier performance, you can use queries like:
+```sql
+selecciona el mejor proveedor para la categoría Neumáticos, basado en plazo de entrega, tiempo de despacho y precio
+```
 
-Example query
-selecciona el mejor preoveedor para la categoria Neumáticos, basado en plazo de entrega, tiempo de despacho y precio
+This query will return the best supplier based on delivery time, dispatch time, and price.
+
+---
+
+## 📜 License
+This project is licensed under the **MIT License**. See the `LICENSE` file for details.
+
+---
+
+## 🤝 Contributing
+Contributions are welcome! Feel free to submit a pull request or open an issue.
+
+---
+
+## 📧 Contact
+For any inquiries, reach out to **Camilo Vélez** at `your_email@example.com`.
+
+---
+
+Happy coding! 🚀
