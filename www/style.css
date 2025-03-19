@@ -1,0 +1,112 @@
+.navigation-logo {
+  grid-area: logo;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigation-menu {
+  grid-area: menu;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Contenedor general de la tabla */
+.styled-table {
+    width: 100%;
+    max-height: 400px; /* Ajusta la altura máxima */
+    overflow-y: auto; /* Agrega scroll vertical */
+    overflow-x: auto; /* Permite desplazamiento horizontal si es necesario */
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: white; /* Fondo blanco para mejor visibilidad */
+}
+
+/* Ajustes internos de la tabla */
+.styled-table table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: auto; /* Ajusta las columnas automáticamente */
+}
+
+/* Estilos para encabezados */
+.styled-table thead {
+    background-color: #2e56ad !important; /* 🔹 Azul corporativo */
+    color: white !important;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 2px solid #ffffff;
+    white-space: nowrap; /* Evita saltos de línea en los encabezados */
+}
+
+/* Encabezados individuales */
+.styled-table th {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 2px solid #ffffff;
+    background-color: #2e56ad !important;
+}
+
+/* Celdas de la tabla */
+.styled-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    white-space: nowrap; /* Evita saltos de línea en celdas */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Añade puntos suspensivos en texto largo */
+}
+
+/* Ajuste dinámico de columnas: más espacio para contenido más largo */
+/* Columnas estrechas (ID, fechas, códigos) */
+.styled-table td:nth-child(n):nth-child(-n+5) { /* Aplica a las primeras 5 columnas */
+    min-width: 100px;
+    max-width: 120px;
+}
+
+/* Columnas medianas (Nombres, descripciones cortas) */
+.styled-table td:nth-child(n+6):nth-child(-n+10) { /* Aplica de la columna 6 a la 10 */
+    min-width: 100px;
+    max-width: 150px;
+}
+
+/* Columnas anchas (Comentarios, textos largos) */
+.styled-table td:nth-child(n+11) { /* Aplica a las columnas de la 11 en adelante */
+    min-width: 100px;
+    max-width: 300px;
+}
+
+/* Filas pares con color alterno */
+.styled-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Efecto hover al pasar el cursor sobre la fila */
+.styled-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Encabezado fijo para que no desaparezca al hacer scroll */
+.styled-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* Scroll en caso de que haya muchas filas */
+.styled-table-container {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 400px; /* Ajusta la altura máxima */
+}
+/* Ajuste para permitir que el tooltip sea visible */
+.styled-table td {
+    position: relative; /* Necesario para la posición del tooltip */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Evita saltos de línea en celdas */
+}

@@ -7,8 +7,11 @@ from shiny import App, render, ui
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
+from pathlib import Path
 
 load_dotenv()
+
+www_dir = Path(__file__).parent / "www"
 
 DATBRICKS_API_KEY = os.getenv("DATABRICKS_API_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -118,7 +121,20 @@ def send_email():
         return f"Error al enviar el correo: {str(e)}"
 
 # --- UI de Shiny ---
+
+page_header = ui.tags.div(
+    ui.tags.div(
+        ui.tags.a(
+            ui.tags.img(src="www/logo_gloria.png", height="40px"),
+            href="https://www.gloria.com.co/",
+        ),
+        id="logo-top",
+        class_="navigation-logo",
+    )
+)
+
 app_ui = ui.page_fluid(
+    page_header,
     ui.h1("Análisis de proveedores y automátización de envío de correos con IA"),
     ui.panel_well(
         ui.h3("Consulta los datos con Agente de IA"),
