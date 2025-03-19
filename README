@@ -35,7 +35,11 @@ pdm venv activate
 
 ### Run the Application
 ```bash
-pdm run shiny run --reload app.py
+pdm run shiny run --reload app.py 
+
+o
+
+pdm run uvicorn app:app --reload
 ```
 
 ---

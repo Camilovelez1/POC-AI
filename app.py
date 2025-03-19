@@ -9,9 +9,19 @@ from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
 from pathlib import Path
 
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from pathlib import Path
+
 load_dotenv()
 
-www_dir = Path(__file__).parent / "www"
+#www_dir = Path(__file__).parent / "www"
+www_dir = Path.cwd() / "www"
+
+
+
+#from fastapi.staticfiles import StaticFiles
+
 
 DATBRICKS_API_KEY = os.getenv("DATABRICKS_API_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -133,6 +143,10 @@ page_header = ui.tags.div(
     )
 )
 
+ui.tags.head(
+    ui.tags.link(rel="stylesheet", href="/www/style.css")
+)
+
 app_ui = ui.page_fluid(
     page_header,
     ui.h1("Análisis de proveedores y automátización de envío de correos con IA"),
@@ -144,7 +158,11 @@ app_ui = ui.page_fluid(
     ),
     ui.panel_well(
         ui.h3("Datos completos"),
-        ui.output_data_frame("full_data")
+        ui.tags.div(
+            ui.output_data_frame("full_data"),
+            id="styled-table-container",  # ID para asegurarnos de que los estilos se apliquen correctamente
+            class_="styled-table"
+    ),
     ),
     ui.panel_well(
         ui.h3("Enviar correo al mejor proveedor"),
@@ -175,5 +193,18 @@ def server(input, output, session):
         return "Presiona 'Enviar Pedido' para enviar el correo."
 
 # Crear la aplicación Shiny
-app = App(app_ui, server)
- 
+#app = App(app_ui, server, static_assets=str(www_dir))
+#app.mount("/www", StaticFiles(directory="www"), name="www")
+#app = App(app_ui, server)
+
+# Crear la app FastAPI
+fastapi_app = FastAPI()
+
+# 🔥 Montar los archivos estáticos en "/www"
+fastapi_app.mount("/www", StaticFiles(directory=str(www_dir)), name="www")
+
+# 🔥 Montar Shiny en FastAPI
+fastapi_app.mount("/", app=App(app_ui, server), name="shiny")
+
+# Asegurar que FastAPI es la app principal
+app = fastapi_app
